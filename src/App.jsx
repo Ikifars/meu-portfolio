@@ -5,16 +5,22 @@ export default function App() {
   // Array de projetos para renderizar dinamicamente
   const meusProjetos = [
     {
-      titulo: "SaaS Dashboard Financeiro",
-      descricao: "Interface completa em React para controle financeiro integrado com banco de dados em tempo real.",
-      tecnologias: ["React", "JavaScript", "Supabase", "CSS Modules"],
-      linkGithub: "https://github.com",
+      titulo: "DevTrack",
+      descricao: "Aplicação web para monitoramento de tarefas, gerenciamento de projetos e colaboração em equipe, com integração a APIs externas.",
+      tecnologias: ["Python", "Flask", "SQLite", "HTML/CSS & JavaScript", "JWT"],
+      linkGithub: "https://github.com/Ikifars/Dev-TrackV2",
     },
     {
-      titulo: "Bot Dashboard de Automação",
-      descricao: "Painel web para monitoramento de logs, análises de mercado e execução de estratégias automatizadas.",
-      tecnologias: ["React", "Node.js", "Python", "Vite"],
-      linkGithub: "https://github.com",
+      titulo: "Bot automação B3",
+      descricao: "Software de automação analítica que monitora o mercado financeiro em tempo real.",
+      tecnologias: ["Python", "Pandas"],
+      linkGithub: "https://github.com/Ikifars/b3-bot-python",
+    },
+    {
+      titulo: "Portfólio Pessoal",
+      descricao: "Meu portfólio pessoal, desenvolvido com React, para apresentar meus projetos e habilidades de forma moderna e responsiva.",
+      tecnologias: ["JavaScript", "React", "CSS"],
+      linkGithub: "https://github.com/Ikifars/portfolio"
     }
   ];
 
@@ -85,7 +91,7 @@ export default function App() {
 
       {/* Footer */}
       <footer id="contato">
-        <p>© {new Date().getFullYear()} - Desenvolvido com React.</p>
+        <p>© {new Date().getFullYear()} - Desenvolvido por Raphael Victor.</p>
       </footer>
     </div>
   );
