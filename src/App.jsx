@@ -20,7 +20,7 @@ export default function App() {
       titulo: "Portfólio Pessoal",
       descricao: "Meu portfólio pessoal, desenvolvido com React, para apresentar meus projetos e habilidades de forma moderna e responsiva.",
       tecnologias: ["JavaScript", "React", "CSS"],
-      linkGithub: "https://github.com/Ikifars/portfolio"
+      linkGithub: "https://github.com/Ikifars/meu-portfolio"
     }
   ];
 
@@ -38,7 +38,7 @@ export default function App() {
 
       {/* Hero Section */}
       <header className="hero container" id="sobre">
-        <h1>Olá, eu sou um <span>Desenvolvedor Full-Stack</span></h1>
+        <h1>Olá, eu sou Raphael Victor<span>Desenvolvedor Full-Stack</span></h1>
         <p>
           Focado em criar soluções modernas e eficientes com JavaScript, React, 
           Node.js e automações inteligentes. Transformando linhas de código em experiências reais.
@@ -46,10 +46,10 @@ export default function App() {
         
         {/* Redes Sociais */}
         <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-          <a href="https://github.com" target="_blank" rel="noreferrer" style={{ color: '#fff' }}>
+          <a href="https://github.com/ikifars" target="_blank" rel="noreferrer" style={{ color: '#fff' }}>
             <Github size={28} />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" style={{ color: '#fff' }}>
+          <a href="https://www.linkedin.com/in/raphael-victor-a29183234/" target="_blank" rel="noreferrer" style={{ color: '#fff' }}>
             <Linkedin size={28} />
           </a>
         </div>
