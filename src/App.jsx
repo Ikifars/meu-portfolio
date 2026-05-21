@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, ExternalLink, Terminal, Code2 } from 'lucide-react';
+import { Github, Linkedin, ExternalLink, Terminal, Code2, FileText } from 'lucide-react';
 
 export default function App() {
   // Array de projetos para renderizar dinamicamente
@@ -28,7 +28,7 @@ export default function App() {
     <div>
       {/* Header / Navbar */}
       <nav className="navbar">
-        <div className="logo">&lt; DevPortfólio /&gt;</div>
+        <div className="logo">&lt; Raphael Victor - Dev /&gt;</div>
         <div className="nav-links">
           <a href="#sobre">Sobre</a>
           <a href="#projetos">Projetos</a>
@@ -38,11 +38,24 @@ export default function App() {
 
       {/* Hero Section */}
       <header className="hero container" id="sobre">
-        <h1>Olá, eu sou Raphael Victor<span>Desenvolvedor Full-Stack</span></h1>
+        {/* Adicionado um espaço antes do span para o texto não grudar */}
+        <h1>Olá, eu sou Raphael Victor <span>Desenvolvedor Full-Stack</span></h1>
         <p>
           Focado em criar soluções modernas e eficientes com JavaScript, React, 
           Node.js e automações inteligentes. Transformando linhas de código em experiências reais.
         </p>
+        
+        {/* BOTÃO DO CURRÍCULO INCLUÍDO */}
+        <div style={{ marginBottom: '2rem' }}>
+          <a 
+            href="/curriculo.pdf" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="btn-cv"
+          >
+            <FileText size={20} /> Visualizar Currículo
+          </a>
+        </div>
         
         {/* Redes Sociais */}
         <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
@@ -64,7 +77,7 @@ export default function App() {
         <div className="projects-grid">
           {meusProjetos.map((projeto, index) => (
             <div className="project-card" key={index}>
-              <div style={{ display: 'flex', justifyContent: 'between', alignItems: 'center', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                 {index % 2 === 0 ? <Code2 color="#0ea5e9" /> : <Terminal color="#0ea5e9" />}
               </div>
               <h3>{projeto.titulo}</h3>
