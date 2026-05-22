@@ -1,109 +1,39 @@
-import React from 'react';
-import { Github, Linkedin, ExternalLink, Terminal, Code2, FileText } from 'lucide-react';
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
 
 export default function App() {
-  // Array de projetos para renderizar dinamicamente
-  const meusProjetos = [
-    {
-      titulo: "DevTrack",
-      descricao: "Aplicação web para monitoramento de tarefas, gerenciamento de projetos e colaboração em equipe, com integração a APIs externas.",
-      tecnologias: ["Python", "Flask", "SQLite", "HTML/CSS & JavaScript", "JWT"],
-      linkGithub: "https://github.com/Ikifars/Dev-TrackV2",
-    },
-    {
-      titulo: "Bot automação B3",
-      descricao: "Software de automação analítica que monitora o mercado financeiro em tempo real.",
-      tecnologias: ["Python", "Pandas"],
-      linkGithub: "https://github.com/Ikifars/b3-bot-python",
-    },
-    {
-      titulo: "Portfólio Pessoal",
-      descricao: "Meu portfólio pessoal, desenvolvido com React, para apresentar meus projetos e habilidades de forma moderna e responsiva.",
-      tecnologias: ["JavaScript", "React", "CSS"],
-      linkGithub: "https://github.com/Ikifars/meu-portfolio"
+  // Estado que gerencia qual página/view está ativa no momento
+  const [currentPage, setCurrentPage] = useState('sobre');
+
+  // Função helper para renderizar o componente correto baseado no estado
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'sobre':
+        return <Hero />;
+      case 'projetos':
+        return <Projects />;
+      case 'contato':
+        return <Contact />;
+      default:
+        return <Hero />;
     }
-  ];
+  };
 
   return (
-    <div>
-      {/* Header / Navbar */}
-      <nav className="navbar">
-        <div className="logo">&lt; Raphael Victor - Dev /&gt;</div>
-        <div className="nav-links">
-          <a href="#sobre">Sobre</a>
-          <a href="#projetos">Projetos</a>
-          <a href="#contato">Contato</a>
-        </div>
-      </nav>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      {/* Navbar fixa recebendo o estado de navegação */}
+      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-      {/* Hero Section */}
-      <header className="hero container" id="sobre">
-        {/* Adicionado um espaço antes do span para o texto não grudar */}
-        <h1>Olá, eu sou Raphael Victor <span>Desenvolvedor Full-Stack</span></h1>
-        <p>
-          Focado em criar soluções modernas e eficientes com JavaScript, React, 
-          Node.js e automações inteligentes. Transformando linhas de código em experiências reais.
-        </p>
-        
-        {/* BOTÃO DO CURRÍCULO INCLUÍDO */}
-        <div style={{ marginBottom: '2rem' }}>
-          <a 
-            href="/curriculo.pdf" 
-            target="_blank" 
-            rel="noreferrer" 
-            className="btn-cv"
-          >
-            <FileText size={20} /> Visualizar Currículo
-          </a>
-        </div>
-        
-        {/* Redes Sociais */}
-        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-          <a href="https://github.com/ikifars" target="_blank" rel="noreferrer" style={{ color: '#fff' }}>
-            <Github size={28} />
-          </a>
-          <a href="https://www.linkedin.com/in/raphael-victor-a29183234/" target="_blank" rel="noreferrer" style={{ color: '#fff' }}>
-            <Linkedin size={28} />
-          </a>
-        </div>
-      </header>
+      {/* Conteúdo Principal Dinâmico */}
+      <div style={{ flex: 1, paddingBottom: '4rem' }}>
+        {renderPage()}
+      </div>
 
-      {/* Seção de Projetos */}
-      <main className="container" id="projetos">
-        <h2 style={{ fontSize: '2rem', borderBottom: '2px solid #1e293b', paddingBottom: '0.5rem' }}>
-          Meus Projetos
-        </h2>
-        
-        <div className="projects-grid">
-          {meusProjetos.map((projeto, index) => (
-            <div className="project-card" key={index}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                {index % 2 === 0 ? <Code2 color="#0ea5e9" /> : <Terminal color="#0ea5e9" />}
-              </div>
-              <h3>{projeto.titulo}</h3>
-              <p>{projeto.descricao}</p>
-              
-              <div className="tags" style={{ marginBottom: '1.5rem' }}>
-                {projeto.tecnologias.map((tech, i) => (
-                  <span className="tag" key={i}>{tech}</span>
-                ))}
-              </div>
-
-              <a 
-                href={projeto.linkGithub} 
-                target="_blank" 
-                rel="noreferrer" 
-                style={{ color: '#0ea5e9', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
-              >
-                Ver no GitHub <ExternalLink size={16} />
-              </a>
-            </div>
-          ))}
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer id="contato">
+      {/* Footer Fixo */}
+      <footer id="contato" style={{ marginTop: 'auto' }}>
         <p>© {new Date().getFullYear()} - Desenvolvido por Raphael Victor.</p>
       </footer>
     </div>
