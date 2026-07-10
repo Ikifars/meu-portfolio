@@ -30,18 +30,15 @@ export default function App() {
       
       <MatrixBackground /> {/* Agora ele vai aparecer perfeitamente no fundo */}
 
-      /* 
-        CORREÇÃO: Adicionamos o fundo preto semi-transparente (rgba) AQUI.
-        Isso cria a película escura que protege a leitura do texto, mas deixa o Matrix passar suavemente.
-      */
+    
       <div style={{ 
         position: 'relative', 
         zIndex: 1, 
         flex: 1, 
         display: 'flex', 
         flexDirection: 'column',
-        backgroundColor: 'rgba(11, 15, 25, 0.85)', // 85% de opacidade para dar o tom escuro hacker
-        backdropFilter: 'blur(2px)' // Um leve desfoque opcional para dar elegância
+        backgroundColor: 'rgba(11, 15, 25, 0.60)', // 60% opacidade
+        backdropFilter: 'blur(1px)' // Um leve desfoque opcional
       }}> 
         <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
