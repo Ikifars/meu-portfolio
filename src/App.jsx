@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import MatrixBackground from './components/MatrixBackground'; // 1. Importa aqui
+import MatrixBackground from './components/MatrixBackground';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('sobre');
@@ -22,20 +22,24 @@ export default function App() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: '#000' }}> {/* 2. Fundo preto */}
-      <MatrixBackground /> {/* 3. Joga ele aqui em cima de tudo */}
+    <div style={{ background: '#000', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <MatrixBackground /> {/* Vai ficar no -zIndex */}
 
-      <div style={{ position: 'relative', zIndex: 1 }}> {/* 4. Garante que o conteúdo fique na frente */}
-        {/* Navbar fixa recebendo o estado de navegação */}
+      <div style={{ position: 'relative', zIndex: 1, flex: 1 }}> {/* Conteúdo na frente */}
         <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-        {/* Conteúdo Principal Dinâmico */}
-        <div style={{ flex: 1, paddingBottom: '4rem' }}>
+        <div style={{ paddingBottom: '4rem' }}>
           {renderPage()}
         </div>
 
-        {/* Footer Fixo */}
-        <footer id="contato" style={{ marginTop: 'auto', color: '#0f0', textAlign: 'center', padding: '1rem' }}>
+        <footer id="contato" style={{ 
+          marginTop: 'auto', 
+          background: 'rgba(0,0,0,0.85)', // fundo semi-transparente
+          backdropFilter: 'blur(4px)',
+          color: '#0f0', 
+          textAlign: 'center', 
+          padding: '1rem' 
+        }}>
           <p>© {new Date().getFullYear()} - Desenvolvido por Raphael Victor.</p>
         </footer>
       </div>
