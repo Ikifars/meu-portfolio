@@ -14,7 +14,7 @@ export default function Navbar({ currentPage, setCurrentPage }) {
           src="/logoport.png" 
           alt="Raphael Victor" 
           style={{ 
-            height: '85px',       // Aumentamos consideravelmente a altura para destacar bem o quadrado
+            height: '75px',       // Aumentamos consideravelmente a altura para destacar bem o quadrado
             width: 'auto',        // Mantém a proporção perfeita
             objectFit: 'contain' 
           }} 
