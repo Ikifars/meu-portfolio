@@ -9,14 +9,27 @@ export default function Navbar({ currentPage, setCurrentPage }) {
 
   return (
     <nav className="navbar">
-      <div className="logo" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setCurrentPage('sobre')}>
+      <div 
+        className="logo" 
+        style={{ 
+          cursor: 'pointer', 
+          display: 'flex', 
+          alignItems: 'center',
+          height: '100%',     // Força o container a usar apenas a altura nativa da navbar
+          maxHeight: '45px'   // Limita o teto do container para não esticar a barra
+        }} 
+        onClick={() => setCurrentPage('sobre')}
+      >
         <img 
           src="/logoport.png" 
           alt="Raphael Victor" 
           style={{ 
-            height: '75px',       // Aumentamos consideravelmente a altura para destacar bem o quadrado
-            width: 'auto',        // Mantém a proporção perfeita
-            objectFit: 'contain' 
+            height: '65px',          // Mantém a logo grande
+            maxHeight: '180%',       // Permite que ela transborde levemente se necessário, sem esticar a nav
+            width: 'auto',        
+            objectFit: 'contain',
+            transform: 'scale(1.3)', // Aumenta o zoom da logo interna sem empurrar as bordas do layout
+            transformOrigin: 'left center'
           }} 
         />
       </div>
