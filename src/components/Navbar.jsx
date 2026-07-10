@@ -8,20 +8,15 @@ export default function Navbar({ currentPage, setCurrentPage }) {
   ];
 
   return (
-    <nav className="navbar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <div 
-        className="logo" 
-        style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} 
-        onClick={() => setCurrentPage('sobre')}
-      >
-        {/* Substitua pelo nome exato do arquivo que está na pasta public */}
+    <nav className="navbar">
+      <div className="logo" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setCurrentPage('sobre')}>
         <img 
-          src="/logoport.png" 
-          alt="Raphael Victor Logo" 
+          src="/raphael_victor_dev_logo.png" 
+          alt="Raphael Victor" 
           style={{ 
-            height: '40px',       // Altura ideal para uma navbar sem quebrar o layout
-            width: 'auto',        // Mantém a proporção original do quadrado
-            objectFit: 'contain'  // Garante que a imagem não distorça
+            height: '75px',       // Aumentamos consideravelmente a altura para destacar bem o quadrado
+            width: 'auto',        // Mantém a proporção perfeita
+            objectFit: 'contain' 
           }} 
         />
       </div>
