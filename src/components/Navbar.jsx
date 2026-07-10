@@ -11,7 +11,7 @@ export default function Navbar({ currentPage, setCurrentPage }) {
     <nav className="navbar">
       <div className="logo" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setCurrentPage('sobre')}>
         <img 
-          src="/raphael_victor_dev_logo.png" 
+          src="/logoport.png" 
           alt="Raphael Victor" 
           style={{ 
             height: '75px',       // Aumentamos consideravelmente a altura para destacar bem o quadrado
