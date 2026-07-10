@@ -22,19 +22,36 @@ export default function App() {
   };
 
   return (
-    <div style={{ background: '#000', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <MatrixBackground /> {/* Vai ficar no -zIndex */}
+    /* 
+      CORREÇÃO: Mudamos o background de '#000' para 'transparent'.
+      Dessa forma, o Matrix (que está fixado no fundo) consegue aparecer!
+    */
+    <div style={{ background: 'transparent', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      
+      <MatrixBackground /> {/* Agora ele vai aparecer perfeitamente no fundo */}
 
-      <div style={{ position: 'relative', zIndex: 1, flex: 1 }}> {/* Conteúdo na frente */}
+      /* 
+        CORREÇÃO: Adicionamos o fundo preto semi-transparente (rgba) AQUI.
+        Isso cria a película escura que protege a leitura do texto, mas deixa o Matrix passar suavemente.
+      */
+      <div style={{ 
+        position: 'relative', 
+        zIndex: 1, 
+        flex: 1, 
+        display: 'flex', 
+        flexDirection: 'column',
+        backgroundColor: 'rgba(11, 15, 25, 0.85)', // 85% de opacidade para dar o tom escuro hacker
+        backdropFilter: 'blur(2px)' // Um leve desfoque opcional para dar elegância
+      }}> 
         <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-        <div style={{ paddingBottom: '4rem' }}>
+        <div style={{ paddingBottom: '4rem', flex: 1 }}>
           {renderPage()}
         </div>
 
         <footer id="contato" style={{ 
           marginTop: 'auto', 
-          background: 'rgba(0,0,0,0.85)', // fundo semi-transparente
+          background: 'rgba(0,0,0,0.5)', // fundo ligeiramente mais leve para combinar
           backdropFilter: 'blur(4px)',
           color: '#0f0', 
           textAlign: 'center', 
