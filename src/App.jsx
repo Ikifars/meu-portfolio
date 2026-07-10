@@ -37,7 +37,7 @@ export default function App() {
         flex: 1, 
         display: 'flex', 
         flexDirection: 'column',
-        backgroundColor: 'rgba(11, 15, 25, 0.60)', // 60% opacidade
+        backgroundColor: 'rgba(11, 15, 25, 0.40)', // 40% opacidade
         backdropFilter: 'blur(1px)' // Um leve desfoque opcional
       }}> 
         <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
