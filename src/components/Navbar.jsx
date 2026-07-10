@@ -8,9 +8,22 @@ export default function Navbar({ currentPage, setCurrentPage }) {
   ];
 
   return (
-    <nav className="navbar">
-      <div className="logo" style={{ cursor: 'pointer' }} onClick={() => setCurrentPage('sobre')}>
-        &lt; Raphael Victor - Dev /&gt;
+    <nav className="navbar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div 
+        className="logo" 
+        style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} 
+        onClick={() => setCurrentPage('sobre')}
+      >
+        {/* Substitua pelo nome exato do arquivo que está na pasta public */}
+        <img 
+          src="/logoport.png" 
+          alt="Raphael Victor Logo" 
+          style={{ 
+            height: '40px',       // Altura ideal para uma navbar sem quebrar o layout
+            width: 'auto',        // Mantém a proporção original do quadrado
+            objectFit: 'contain'  // Garante que a imagem não distorça
+          }} 
+        />
       </div>
       <div className="nav-links">
         {links.map((link) => (
