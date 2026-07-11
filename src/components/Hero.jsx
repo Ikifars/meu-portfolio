@@ -134,30 +134,45 @@ export default function Hero() {
         </section>
 
         {/* --- SEÇÃO: MINHAS STACKS (Estilo Badges Compactos) --- */}
-        <section style={{ padding: '2rem 0', background: 'transparent' }}>
-          <h3 style={{ fontSize: '1.2rem', marginBottom: '1.2rem', color: '#fff', fontWeight: '500' }}>
-            Tecnologias & Stacks
-          </h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-            {stacks.map((stack) => (
-              <div key={stack.name} className="stack-badge">
-                <img 
-                  src={stack.logo} 
-                  alt={stack.name} 
-                  style={{ 
-                    width: '20px', 
-                    height: '20px',
-                    filter: stack.filter ? 'invert(1) brightness(2)' : 'none'
-                  }} 
-                />
-                <span style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.85rem', fontWeight: '500' }}>
-                  {stack.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </section>
-
+       <section style={{ padding: '2rem 0', background: 'transparent', textAlign: 'left' }}>
+  <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#fff', fontWeight: '500' }}>
+    Tecnologias & Stacks
+  </h3>
+  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'flex-start' }}>
+    {stacks.map((stack) => (
+      <div 
+        key={stack.name}
+        className="stack-card"
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100px',
+          padding: '1rem 0',
+          background: 'rgba(255, 255, 255, 0.03)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          borderRadius: '12px',
+          transition: 'all 0.3s ease',
+        }}
+      >
+        <img 
+          src={stack.logo} 
+          alt={stack.name} 
+          style={{ 
+            width: '35px', // Ajustado ligeiramente para casar com o novo design compacto
+            height: '35px', 
+            marginBottom: '0.6rem',
+            filter: stack.filter ? 'invert(1) brightness(2)' : 'none'
+          }} 
+        />
+        <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.8rem', fontWeight: '500' }}>
+          {stack.name}
+        </span>
+      </div>
+    ))}
+  </div>
+</section>
         {/* --- SEÇÃO FINAL: CONECTE-SE / FOOTER COMPACTO --- */}
         <footer style={{ padding: '3rem 0 4rem 0', background: 'transparent', borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: '1.5rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1.5rem' }}>
           <div>
