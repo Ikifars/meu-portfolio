@@ -106,18 +106,18 @@ export default function Hero() {
         >
           {/* Miniatura da Foto */}
           <div style={{ flexShrink: 0, margin: '0 auto' }}>
-            <img 
-              src="/perfil.png" 
-              alt="Raphael Victor" 
-              style={{
-                width: '100px',
-                height: '100px',
-                borderRadius: '50%',
-                objectFit: 'cover',
-                border: '2px solid rgba(255,255,255,0.15)',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
-              }}
-            />
+           <img 
+  src={process.env.PUBLIC_URL + '/perfil.png'} 
+  alt="Raphael Victor" 
+  style={{
+    width: '100px',
+    height: '100px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+    border: '2px solid rgba(255,255,255,0.15)',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+  }}
+/>
           </div>
 
           {/* Texto descritivo */}
