@@ -121,7 +121,7 @@ export default function Hero() {
           </div>
 
           {/* Texto descritivo */}
-          <div style={{ flex: '1', minWidth: '280px' }}>
+          <div style={{ flex: '1', minWidth: '280px', textAlign: 'center' }}>
             <h2 style={{ fontSize: '1.5rem', marginBottom: '0.75rem', color: '#fff', fontWeight: '600' }}>
               Sobre Mim
             </h2>
