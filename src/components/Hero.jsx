@@ -134,7 +134,7 @@ export default function Hero() {
         </section>
 
         {/* --- SEÇÃO: MINHAS STACKS (Estilo Badges Compactos) --- */}
-         <section style={{ padding: '2rem 0', background: 'transparent', textAlign: 'left' }}>
+         <section style={{ padding: '2rem 0', background: 'transparent', textAlign: 'center' }}>
   <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#fff', fontWeight: '500' }}>
     Tecnologias & Stacks
   </h3>
