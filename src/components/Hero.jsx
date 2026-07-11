@@ -107,7 +107,7 @@ export default function Hero() {
           {/* Miniatura da Foto */}
           <div style={{ flexShrink: 0, margin: '0 auto' }}>
             <img 
-              src="/sua-foto.jpg" 
+              src="/perfil.png" 
               alt="Raphael Victor" 
               style={{
                 width: '100px',
