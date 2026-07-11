@@ -41,7 +41,7 @@ export default function Hero() {
         @keyframes slideInFromRight {
           0% {
             opacity: 0;
-            transform: translateX(150px);
+            transform: translateX(120px);
           }
           100% {
             opacity: 1;
@@ -49,7 +49,8 @@ export default function Hero() {
           }
         }
         .about-section-animated {
-          animation: slideInFromRight 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+          /* Aumentado para 2.2s com uma curva que desliza e para suavemente no final */
+          animation: slideInFromRight 2.2s cubic-bezier(0.1, 1, 0.1, 1) forwards !important;
         }
         .stack-badge {
           display: flex;
@@ -76,7 +77,7 @@ export default function Hero() {
         }
       `}</style>
 
-      {/* SEU CÓDIGO ORIGINAL (Ajustado apenas o padding vertical para não empurrar demais o conteúdo) */}
+      {/* SEU CÓDIGO ORIGINAL */}
       <header className="hero container" style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
         <h1>Olá, eu sou Raphael Victor <span>Desenvolvedor Full-Stack</span></h1>
         <p>
@@ -85,7 +86,7 @@ export default function Hero() {
         </p>
       </header>
 
-      {/* CONTEÚDO INTEGRADO (Sobre Mim + Stacks + Footer) */}
+      {/* CONTEÚDO INTEGRADO */}
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 1.5rem' }}>
         
         {/* --- SEÇÃO: SOBRE MIM --- */}
@@ -100,7 +101,7 @@ export default function Hero() {
             background: 'transparent',
             flexWrap: 'wrap',
             opacity: 0,
-            transform: 'translateX(60px)',
+            transform: 'translateX(120px)', /* Casado com o valor de início do keyframe */
           }}
         >
           {/* Miniatura da Foto */}
@@ -133,83 +134,79 @@ export default function Hero() {
           </div>
         </section>
 
-        {/* --- SEÇÃO: MINHAS STACKS (Estilo Badges Compactos) --- */}
-         <section style={{ padding: '2rem 0', background: 'transparent', textAlign: 'center' }}>
-  <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#fff', fontWeight: '500' }}>
-    Tecnologias & Stacks
-  </h3>
-  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'flex-start' }}>
-    {stacks.map((stack) => {
-      // Função para lidar com o movimento 3D dinâmico
-      const handleMouseMove = (e) => {
-        const card = e.currentTarget;
-        const box = card.getBoundingClientRect();
-        
-        // Calcula a posição do mouse relativa ao centro do card (-0.5 a 0.5)
-        const x = (e.clientX - box.left) / box.width - 0.5;
-        const y = (e.clientY - box.top) / box.height - 0.5;
-        
-        // Multiplicadores definem a intensidade da inclinação (15 graus max)
-        card.style.transform = `perspective(300px) rotateX(${-y * 15}deg) rotateY(${x * 15}deg) scale(1.05)`;
-        card.style.borderColor = 'rgba(255, 255, 255, 0.25)';
-        card.style.background = 'rgba(255, 255, 255, 0.06)';
-        card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.3)';
-      };
+        {/* --- SEÇÃO: MINHAS STACKS --- */}
+        <section style={{ padding: '2rem 0', background: 'transparent', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#fff', fontWeight: '500' }}>
+            Tecnologias & Stacks
+          </h3>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'flex-start' }}>
+            {stacks.map((stack) => {
+              const handleMouseMove = (e) => {
+                const card = e.currentTarget;
+                const box = card.getBoundingClientRect();
+                const x = (e.clientX - box.left) / box.width - 0.5;
+                const y = (e.clientY - box.top) / box.height - 0.5;
+                
+                card.style.transition = 'none';
+                card.style.transform = `perspective(300px) rotateX(${-y * 15}deg) rotateY(${x * 15}deg) scale(1.05)`;
+                card.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+                card.style.background = 'rgba(255, 255, 255, 0.06)';
+                card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.3)';
+              };
 
-      // Restaura o estado original de forma suave quando o mouse sai
-      const handleMouseLeave = (e) => {
-        const card = e.currentTarget;
-        card.style.transform = 'perspective(300px) rotateX(0deg) rotateY(0deg) scale(1)';
-        card.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-        card.style.background = 'rgba(255, 255, 255, 0.03)';
-        card.style.boxShadow = 'none';
-      };
+              const handleMouseLeave = (e) => {
+                const card = e.currentTarget;
+                card.style.transition = 'transform 0.25s ease-out, background 0.2s, border-color 0.2s, box-shadow 0.2s';
+                card.style.transform = 'perspective(300px) rotateX(0deg) rotateY(0deg) scale(1)';
+                card.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                card.style.background = 'rgba(255, 255, 255, 0.03)';
+                card.style.boxShadow = 'none';
+              };
 
-      return (
-        <div 
-          key={stack.name}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100px',
-            padding: '1rem 0',
-            background: 'rgba(255, 255, 255, 0.03)',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            borderRadius: '12px',
-            // O segredo do efeito suave de mola está na transição de transform muito baixa ou desativada no move, mas aqui deixamos rápida para o retorno
-            transition: 'transform 0.15s ease-out, background 0.2s, border-color 0.2s, box-shadow 0.2s',
-            cursor: 'pointer',
-            transformStyle: 'preserve-3d', // Mantém o contexto 3D interno
-          }}
-        >
-          <img 
-            src={stack.logo} 
-            alt={stack.name} 
-            style={{ 
-              width: '35px', 
-              height: '35px', 
-              marginBottom: '0.6rem',
-              filter: stack.filter ? 'invert(1) brightness(2)' : 'none',
-              transform: 'translateZ(10px)', // Faz o ícone "saltar" ligeiramente para fora do card
-            }} 
-          />
-          <span style={{ 
-            color: 'rgba(255,255,255,0.7)', 
-            fontSize: '0.8rem', 
-            fontWeight: '500',
-            transform: 'translateZ(5px)', // Texto também ganha profundidade
-          }}>
-            {stack.name}
-          </span>
-        </div>
-      );
-    })}
-  </div>
-</section>
+              return (
+                <div 
+                  key={stack.name}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={handleMouseLeave}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '100px',
+                    padding: '1rem 0',
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    borderRadius: '12px',
+                    cursor: 'pointer',
+                    transformStyle: 'preserve-3d',
+                  }}
+                >
+                  <img 
+                    src={stack.logo} 
+                    alt={stack.name} 
+                    style={{ 
+                      width: '35px', 
+                      height: '35px', 
+                      marginBottom: '0.6rem',
+                      filter: stack.filter ? 'invert(1) brightness(2)' : 'none',
+                      transform: 'translateZ(10px)',
+                    }} 
+                  />
+                  <span style={{ 
+                    color: 'rgba(255,255,255,0.7)', 
+                    fontSize: '0.8rem', 
+                    fontWeight: '500',
+                    transform: 'translateZ(5px)',
+                  }}>
+                    {stack.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
         {/* --- SEÇÃO FINAL: CONECTE-SE / FOOTER COMPACTO --- */}
         <footer style={{ padding: '3rem 0 4rem 0', background: 'transparent', borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: '1.5rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1.5rem' }}>
           <div>
@@ -222,7 +219,6 @@ export default function Hero() {
           </div>
           
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            {/* Botão do Currículo menor e mais discreto */}
             <a 
               href="/curriculo.pdf" 
               target="_blank" 
@@ -239,7 +235,6 @@ export default function Hero() {
               <FileText size={16} /> Currículo
             </a>
             
-            {/* Links de Redes Sociais */}
             <a href="https://github.com/ikifars" target="_blank" rel="noreferrer" className="social-icon-btn">
               <Github size={24} />
             </a>
