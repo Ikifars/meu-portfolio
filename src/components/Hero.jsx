@@ -134,43 +134,80 @@ export default function Hero() {
         </section>
 
         {/* --- SEÇÃO: MINHAS STACKS (Estilo Badges Compactos) --- */}
-       <section style={{ padding: '2rem 0', background: 'transparent', textAlign: 'left' }}>
+         <section style={{ padding: '2rem 0', background: 'transparent', textAlign: 'left' }}>
   <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#fff', fontWeight: '500' }}>
     Tecnologias & Stacks
   </h3>
   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'flex-start' }}>
-    {stacks.map((stack) => (
-      <div 
-        key={stack.name}
-        className="stack-card"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100px',
-          padding: '1rem 0',
-          background: 'rgba(255, 255, 255, 0.03)',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          borderRadius: '12px',
-          transition: 'all 0.3s ease',
-        }}
-      >
-        <img 
-          src={stack.logo} 
-          alt={stack.name} 
-          style={{ 
-            width: '35px', // Ajustado ligeiramente para casar com o novo design compacto
-            height: '35px', 
-            marginBottom: '0.6rem',
-            filter: stack.filter ? 'invert(1) brightness(2)' : 'none'
-          }} 
-        />
-        <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.8rem', fontWeight: '500' }}>
-          {stack.name}
-        </span>
-      </div>
-    ))}
+    {stacks.map((stack) => {
+      // Função para lidar com o movimento 3D dinâmico
+      const handleMouseMove = (e) => {
+        const card = e.currentTarget;
+        const box = card.getBoundingClientRect();
+        
+        // Calcula a posição do mouse relativa ao centro do card (-0.5 a 0.5)
+        const x = (e.clientX - box.left) / box.width - 0.5;
+        const y = (e.clientY - box.top) / box.height - 0.5;
+        
+        // Multiplicadores definem a intensidade da inclinação (15 graus max)
+        card.style.transform = `perspective(300px) rotateX(${-y * 15}deg) rotateY(${x * 15}deg) scale(1.05)`;
+        card.style.borderColor = 'rgba(255, 255, 255, 0.25)';
+        card.style.background = 'rgba(255, 255, 255, 0.06)';
+        card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.3)';
+      };
+
+      // Restaura o estado original de forma suave quando o mouse sai
+      const handleMouseLeave = (e) => {
+        const card = e.currentTarget;
+        card.style.transform = 'perspective(300px) rotateX(0deg) rotateY(0deg) scale(1)';
+        card.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+        card.style.background = 'rgba(255, 255, 255, 0.03)';
+        card.style.boxShadow = 'none';
+      };
+
+      return (
+        <div 
+          key={stack.name}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100px',
+            padding: '1rem 0',
+            background: 'rgba(255, 255, 255, 0.03)',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            borderRadius: '12px',
+            // O segredo do efeito suave de mola está na transição de transform muito baixa ou desativada no move, mas aqui deixamos rápida para o retorno
+            transition: 'transform 0.15s ease-out, background 0.2s, border-color 0.2s, box-shadow 0.2s',
+            cursor: 'pointer',
+            transformStyle: 'preserve-3d', // Mantém o contexto 3D interno
+          }}
+        >
+          <img 
+            src={stack.logo} 
+            alt={stack.name} 
+            style={{ 
+              width: '35px', 
+              height: '35px', 
+              marginBottom: '0.6rem',
+              filter: stack.filter ? 'invert(1) brightness(2)' : 'none',
+              transform: 'translateZ(10px)', // Faz o ícone "saltar" ligeiramente para fora do card
+            }} 
+          />
+          <span style={{ 
+            color: 'rgba(255,255,255,0.7)', 
+            fontSize: '0.8rem', 
+            fontWeight: '500',
+            transform: 'translateZ(5px)', // Texto também ganha profundidade
+          }}>
+            {stack.name}
+          </span>
+        </div>
+      );
+    })}
   </div>
 </section>
         {/* --- SEÇÃO FINAL: CONECTE-SE / FOOTER COMPACTO --- */}
