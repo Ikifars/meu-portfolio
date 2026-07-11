@@ -139,7 +139,7 @@ export default function Hero() {
           <h3 style={{ fontSize: '1.2rem', marginBottom: '1.5rem', color: '#fff', fontWeight: '500' }}>
             Tecnologias & Stacks
           </h3>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'flex-start' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
             {stacks.map((stack) => {
               const handleMouseMove = (e) => {
                 const card = e.currentTarget;
