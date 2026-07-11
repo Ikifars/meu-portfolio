@@ -41,7 +41,7 @@ export default function Hero() {
         @keyframes slideInFromRight {
           0% {
             opacity: 0;
-            transform: translateX(60px);
+            transform: translateX(150px);
           }
           100% {
             opacity: 1;
@@ -49,7 +49,7 @@ export default function Hero() {
           }
         }
         .about-section-animated {
-          animation: slideInFromRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+          animation: slideInFromRight 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
         }
         .stack-badge {
           display: flex;
