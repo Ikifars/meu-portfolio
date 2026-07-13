@@ -33,6 +33,11 @@ export default function Hero() {
     { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', filter: true },
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
     { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+    { name: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+    { name: 'GitHub', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', filter: true },
+    { name: 'SQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg' },
+    { name: 'Vercel', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg', filter: true },
+    { name: 'Render', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/render/render-original.svg', filter: true }
   ];
 
   return (
@@ -41,7 +46,7 @@ export default function Hero() {
         @keyframes slideInFromRight {
           0% {
             opacity: 0;
-            transform: translateX(120px);
+            transform: translateX(40px);
           }
           100% {
             opacity: 1;
@@ -49,8 +54,8 @@ export default function Hero() {
           }
         }
         .about-section-animated {
-          /* Aumentado para 2.2s com uma curva que desliza e para suavemente no final */
-          animation: slideInFromRight 2.2s cubic-bezier(0.1, 1, 0.1, 1) forwards !important;
+          /* Ajustado para 2.8s com curva suave que desacelera gradativamente */
+          animation: slideInFromRight 2.8s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
         }
         .stack-badge {
           display: flex;
@@ -77,10 +82,10 @@ export default function Hero() {
         }
       `}</style>
 
-      {/* SEU CÓDIGO ORIGINAL */}
-      <header className="hero container" style={{ paddingTop: '4rem', paddingBottom: '2rem' }}>
-        <h1>Olá, eu sou Raphael Victor <span>Desenvolvedor Full-Stack</span></h1>
-        <p>
+      {/* CABEÇALHO CENTRALIZADO */}
+      <header className="hero container" style={{ paddingTop: '4rem', paddingBottom: '2rem', textAlign: 'center' }}>
+        <h1>Olá, eu sou Raphael Victor <span style={{ display: 'block' }}>Desenvolvedor Full-Stack</span></h1>
+        <p style={{ margin: '1rem auto 0 auto', maxWidth: '600px' }}>
           Focado em criar soluções modernas e eficientes com JavaScript, React, 
           Node.js e automações inteligentes. Transformando linhas de código em experiências reais.
         </p>
@@ -96,28 +101,29 @@ export default function Hero() {
           style={{
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             gap: '2rem',
             padding: '2.5rem 0',
             background: 'transparent',
             flexWrap: 'wrap',
             opacity: 0,
-            transform: 'translateX(120px)', /* Casado com o valor de início do keyframe */
+            transform: 'translateX(40px)', /* Sincronizado com o ponto de partida suave do keyframe */
           }}
         >
           {/* Miniatura da Foto */}
           <div style={{ flexShrink: 0, margin: '0 auto' }}>
-          <img 
-  src="/perfil.png" 
-  alt="Raphael Victor" 
-  style={{
-    width: '100px',
-    height: '100px',
-    borderRadius: '50%',
-    objectFit: 'cover',
-    border: '2px solid rgba(255,255,255,0.15)',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
-  }}
-/>
+            <img 
+              src="/perfil.png" 
+              alt="Raphael Victor" 
+              style={{
+                width: '100px',
+                height: '100px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                border: '2px solid rgba(255,255,255,0.15)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+              }}
+            />
           </div>
 
           {/* Texto descritivo */}
@@ -209,7 +215,7 @@ export default function Hero() {
 
         {/* --- SEÇÃO FINAL: CONECTE-SE / FOOTER COMPACTO --- */}
         <footer style={{ padding: '3rem 0 4rem 0', background: 'transparent', borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: '1.5rem', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1.5rem' }}>
-          <div>
+          <div style={{ textAlign: 'left', minWidth: '250px' }}>
             <h4 style={{ color: '#fff', fontSize: '1.1rem', margin: '0 0 0.25rem 0', fontWeight: '500' }}>
               Vamos construir algo juntos?
             </h4>
@@ -218,7 +224,7 @@ export default function Hero() {
             </p>
           </div>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
             <a 
               href="/curriculo.pdf" 
               target="_blank" 
