@@ -1,185 +1,77 @@
-:root {
-  --primary: #0ea5e9;
-  /* RGBA (85% de opacidade) para o Matrix passar de forma sutil por trás dos cards */
-  --bg-card: rgba(30, 41, 59, 0.85); 
-  --text-muted: #94a3b8;
-}
+import React from 'react';
+import { ExternalLink, Terminal, Code2 } from 'lucide-react';
 
-/* 
-  CORREÇÃO CRUCIAL PARA APARECER O MATRIX:
-  Força toda a árvore raiz do site (HTML, Body e a Div do React) 
-  a ficarem transparentes, caso contrário elas bloqueiam o Canvas em z-index: -1
-*/
-html, 
-body, 
-#root {
-  overflow-x: hidden;
-  background-color: transparent !important;
-  min-height: 100vh;
-  width: 100%;
-}
+export default function Projects() {
+  const meusProjetos = [
+    {
+      titulo: "DevTrack",
+      descricao: "Aplicação web para monitoramento de tarefas, gerenciamento de projetos e colaboração em equipe, com integração a APIs externas.",
+      tecnologias: ["Python", "Flask", "SQLite", "HTML/CSS & JavaScript", "JWT"],
+      linkGithub: "https://github.com/Ikifars/Dev-TrackV2",
+    },
+    {
+      titulo: "Bot automação B3",
+      descricao: "Software de automação analítica que monitora o mercado financeiro em tempo real e executa rotinas estratégicas.",
+      tecnologias: ["Python", "Pandas", "Automation"],
+      linkGithub: "https://github.com/Ikifars/b3-bot-python",
+    },
+    {
+      titulo: "Portfólio Pessoal",
+      descricao: "Meu portfólio pessoal, desenvolvido com React, para apresentar meus projetos e habilidades de forma moderna e responsiva.",
+      tecnologias: ["JavaScript", "React", "CSS"],
+      linkGithub: "https://github.com/Ikifars/meu-portfolio"
+    }
+  ];
 
-/* 
-  Garante que o texto e os elementos padrões fiquem brancos 
-  e cria o plano de fundo geral escuro e semi-transparente do site
-*/
-body {
-  color: #fff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  /* Um fundo preto com 90% de opacidade para não atrapalhar a leitura do texto */
-  background-image: linear-gradient(rgba(11, 15, 25, 0.9), rgba(11, 15, 25, 0.9)) !important;
-}
+  return (
+    // Removido o <main> duplicado para não chocar com seletores globais e envelopado em um container controlado
+    <section className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <h2 style={{ 
+        fontSize: '1.75rem', 
+        color: '#fff', 
+        textAlign: 'center', 
+        marginBottom: '2.5rem',
+        fontWeight: '600'
+      }}>
+        Meus Projetos
+      </h2>
+      
+      <div className="projects-grid">
+        {meusProjetos.map((projeto, index) => (
+          <div className="project-card" key={index} style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ marginBottom: '1rem' }}>
+              {index % 2 === 0 ? <Code2 size={22} color="var(--primary)" /> : <Terminal size={22} color="var(--primary)" />}
+            </div>
+            <h3>{projeto.titulo}</h3>
+            {/* O flex-grow garante que, mesmo com descrições de tamanhos diferentes, os botões do github fiquem alinhados perfeitamente na mesma linha embaixo */}
+            <p style={{ flexGrow: 1, margin: '0 0 1.25rem 0' }}>{projeto.descricao}</p>
+            
+            <div className="tags" style={{ marginBottom: '1.5rem' }}>
+              {projeto.tecnologias.map((tech, i) => (
+                <span className="tag" key={i}>{tech}</span>
+              ))}
+            </div>
 
-/* Criamos um container para as seções de texto garantirem o empilhamento correto */
-.hero, .container, footer {
-  position: relative;
-  z-index: 1; /* Fica acima do z-index: -1 do Matrix */
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
-
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  /* Fundo escuro com 75% de opacidade para a navbar */
-  background-color: rgba(11, 15, 25, 0.75) !important; 
-  border-bottom: 1px solid #1e293b;
-  
-  /* Mantém a navbar no topo e acima de tudo ao scrollar */
-  position: sticky;
-  top: 0;
-  z-index: 10; 
-  
-  /* Efeito de desfoque estilo "vidro jateado" (Glassmorphism) nas letras do Matrix */
-  backdrop-filter: blur(8px); 
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.logo {
-  font-weight: bold;
-  font-size: 1.3rem;
-  color: var(--primary);
-}
-
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  margin-left: 1.5rem;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover {
-  color: var(--primary);
-}
-
-/* Hero Section */
-.hero {
-  text-align: center;
-  padding: 5rem 1rem;
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero h1 span {
-  color: var(--primary);
-}
-
-.hero p {
-  color: var(--text-muted);
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-}
-
-/* Grid de Projetos */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.project-card {
-  background-color: var(--bg-card);
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #334155;
-  transition: transform 0.3s, border-color 0.3s;
-  
-  /* Aplica o mesmo desfoque suave nos cards de projetos */
-  backdrop-filter: blur(4px); 
-  -webkit-backdrop-filter: blur(4px);
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary);
-}
-
-.project-card h3 {
-  margin-bottom: 0.5rem;
-}
-
-.project-card p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-bottom: 1rem;
-  min-height: 60px;
-}
-
-.tags {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.tag {
-  background: #0c4a6e;
-  color: #38bdf8;
-  padding: 0.25rem 0.6rem;
-  font-size: 0.8rem;
-  border-radius: 4px;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 2rem;
-  margin-top: 4rem;
-  border-top: 1px solid #1e293b;
-  color: var(--text-muted);
-}
-
-/* Botão do Currículo */
-.btn-cv {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: var(--primary);
-  color: #fff;
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 4px 6px -1px rgba(14, 165, 233, 0.2);
-}
-
-.btn-cv:hover {
-  background-color: #0284c7;
-  transform: translateY(-2px);
-}
-
-.btn-cv:active {
-  transform: translateY(0);
+            <a 
+              href={projeto.linkGithub} 
+              target="_blank" 
+              rel="noreferrer" 
+              style={{ 
+                color: 'var(--primary)', 
+                textDecoration: 'none', 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '0.5rem',
+                fontSize: '0.9rem',
+                fontWeight: '500',
+                width: 'fit-content'
+              }}
+            >
+              Ver no GitHub <ExternalLink size={15} />
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
