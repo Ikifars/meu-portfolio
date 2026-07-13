@@ -1,4 +1,3 @@
-
 :root {
   --primary: #0ea5e9;
   /* RGBA (85% de opacidade) para o Matrix passar de forma sutil por trás dos cards */
@@ -105,24 +104,17 @@ body {
 /* Grid de Projetos */
 .projects-grid {
   display: grid;
-  /* Calibrado para minmax 280px para melhor responsividade em telas menores */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
   margin-top: 2rem;
 }
 
 .project-card {
-  display: flex;
-  flex-direction: column; /* Garante o alinhamento vertical dos elementos internos */
   background-color: var(--bg-card);
   padding: 1.5rem;
-  border-radius: 12px; /* Arredondamento suave e moderno */
-  border: 1px solid rgba(255, 255, 255, 0.08); /* Borda sutil */
-  /* Transição suave usando a curva cubic-bezier refinada */
-  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
-              border-color 0.3s ease, 
-              background-color 0.3s ease, 
-              box-shadow 0.3s ease;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  transition: transform 0.3s, border-color 0.3s;
   
   /* Aplica o mesmo desfoque suave nos cards de projetos */
   backdrop-filter: blur(4px); 
@@ -130,59 +122,33 @@ body {
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: rgba(14, 165, 233, 0.4);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  border-color: var(--primary);
 }
 
 .project-card h3 {
-  font-size: 1.25rem;
-  color: #fff;
-  margin: 0 0 0.5rem 0;
-  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .project-card p {
   color: var(--text-muted);
   font-size: 0.95rem;
-  line-height: 1.5;
-  margin: 0 0 1.25rem 0;
-  flex-grow: 1; /* Empurra os elementos de baixo para o final do card mantendo o alinhamento fixo */
+  margin-bottom: 1rem;
+  min-height: 60px;
 }
 
 .tags {
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-  margin-bottom: 1.5rem;
 }
 
 .tag {
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 0.25rem 0.75rem;
-  background: rgba(14, 165, 233, 0.1);
+  background: #0c4a6e;
   color: #38bdf8;
-  border: 1px solid rgba(14, 165, 233, 0.15);
-  border-radius: 15px; /* Formato pílula moderno */
-}
-
-/* Link customizado dos projetos */
-.project-link {
-  color: var(--primary);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color 0.2s ease;
-  width: fit-content;
-}
-
-.project-link:hover {
-  color: #38bdf8;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
 }
 
 /* Footer */
