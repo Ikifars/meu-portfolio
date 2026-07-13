@@ -29,6 +29,7 @@ export default function Hero() {
     { name: 'HTML5', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
     { name: 'CSS3', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
     { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+    { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' }, // TypeScript adicionado aqui
     { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
     { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', filter: true },
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
@@ -36,8 +37,7 @@ export default function Hero() {
     { name: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
     { name: 'GitHub', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', filter: true },
     { name: 'SQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg' },
-    { name: 'Vercel', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg', filter: true },
-    { name: 'Render', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/render/render-original.svg', filter: true }
+    { name: 'Vercel', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg', filter: true }
   ];
 
   return (
@@ -54,7 +54,6 @@ export default function Hero() {
           }
         }
         .about-section-animated {
-          /* Ajustado para 2.8s com curva suave que desacelera gradativamente */
           animation: slideInFromRight 2.8s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
         }
         .stack-badge {
@@ -107,7 +106,7 @@ export default function Hero() {
             background: 'transparent',
             flexWrap: 'wrap',
             opacity: 0,
-            transform: 'translateX(40px)', /* Sincronizado com o ponto de partida suave do keyframe */
+            transform: 'translateX(40px)',
           }}
         >
           {/* Miniatura da Foto */}
